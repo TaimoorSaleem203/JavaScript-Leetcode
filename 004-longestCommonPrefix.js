@@ -7,7 +7,7 @@ function commonPrefix(){
     plen = pref.length
 
     for(let s of strs.slice(1,)){
-        while(pref!==s.slice(0,plen)){
+        while(!s.startsWith(pref)){
             pref = pref.slice(0,plen)
             plen-=1
         }
@@ -43,4 +43,4 @@ function commonPrefix(){
     return res
 
 }
-// console.log(commonPrefix());
+console.log(commonPrefix());
