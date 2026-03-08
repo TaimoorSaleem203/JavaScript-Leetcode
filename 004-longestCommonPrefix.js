@@ -1,20 +1,46 @@
 
 //Logic 01
-let strs = ["flower","flow","flight"]
-let target = "fl"
+function commonPrefix(){
+    let strs = ["flower","flow","flight"]
 
-let pref = strs[0]
-let plen = pref.length
+    pref = strs[0]
+    plen = pref.length
 
-for(let s of strs.slice(1,)){
-    while(pref !=  s.slice(0,plen)){
-        pref = pref.slice(0,plen-1)
-        plen-=1
+    for(let s of strs.slice(1,)){
+        while(pref!==s.slice(0,plen)){
+            pref = pref.slice(0,plen)
+            plen-=1
+        }
+    }
+
+    if(plen==0){
+        return '""'
+    }else{
+        return pref
     }
 }
+    
+console.log(commonPrefix());
 
-if(plen==0){
-    console.log("");
-}else{
-    console.log(pref);
+//Logic 02
+
+function commonPrefix(){
+    let strs = ["flow","flower","flight"]
+    let res = ""
+    
+    pref = strs[0]
+    plen = pref.length
+    
+    for(let i=0 ; i<plen ; i++){
+        for(let s of strs.slice(1,)){
+            if(s[i]!==pref[i] && i<plen){
+                return res
+            }
+        }
+        res += pref[i]
+    }
+
+    return res
+
 }
+// console.log(commonPrefix());
