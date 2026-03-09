@@ -8,7 +8,7 @@ function commonPrefix(){
 
     for(let s of strs.slice(1,)){
         while(!s.startsWith(pref)){
-            pref = pref.slice(0,plen)
+            pref = pref.slice(0,plen-1)
             plen-=1
         }
     }
