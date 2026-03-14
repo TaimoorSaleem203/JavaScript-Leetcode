@@ -1,27 +1,50 @@
 // Logic 01
+// function validParentheses() {
+//     let brackets = ['{}', '()', '[]'];
+//     let s = '((((((((()))))))))';
+//     let replace = true;
+
+//     while (replace) {
+//         let startLen = s.length //4
+
+//         for (let inner of brackets) {
+//             s = s.replaceAll(inner, "")
+//         }
+  
+//         if (startLen == s.length) {
+//             replace = false
+//         }
+//     }
+    
+//     console.log(s === "");
+// }
+
+
+// validParentheses()
+
+//Logic 02
 function validParentheses() {
-    let brackets = ['{}', '()', '[]'];
-    let s = '{[)}';
-    let replace = true;
+    const stack = [];
+    const map = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    };
+    let s = '[]()'
 
-    while (replace) {
-        let startLen = s.length //4
+    for(let char of s){
+        if(char in map){
+            let top = stack.pop()
 
-        for (let inner of brackets) {
-            s = s.replace(inner, "")
-            console.log("start:", startLen);
-            console.log("s.len:", s.length);
+            if(top!==map[char]){
+                return false
+            }
+        }else{
+            stack.push(char)
         }
-        // s.length = 0
-        if (startLen == s.length) //0 == 0 {
-            replace = false
     }
 
-
-
-    console.log(s === "");
-
+    return stack.length == 0
 }
 
-
-validParentheses()
+console.log(validParentheses());
